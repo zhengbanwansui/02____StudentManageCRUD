@@ -3,6 +3,7 @@ import java.sql.*;
 import java.util.Scanner;
 import java.*;
 public class StudentManager{
+	// 增加学生
 	static void addStu(Connection conn,String temp_name,int temp_num,int temp_mark) throws SQLException{
 		String temp_str = "INSERT INTO tab1(id,name,num,mark) VALUES (?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(temp_str);
@@ -14,6 +15,7 @@ public class StudentManager{
 		System.out.println("[[[" + t + "]]]");
 		pstmt.close();
 	}
+	// 删除学生
 	static void delStu(Connection conn,String temp_name) throws SQLException{
 		String temp_str = "DELETE FROM tab1 where name = ?";
 		PreparedStatement pstmt = conn.prepareStatement(temp_str);
@@ -22,6 +24,7 @@ public class StudentManager{
 		System.out.println("[[[" + t + "]]]");
 		pstmt.close();
 	}
+	// 改变学生
 	static void chgeStu(Connection conn,String temp_name,int temp_num,int temp_mark) throws SQLException{
 		String temp_str = "UPDATE tab1 set num=? ,mark=? where name = ?";
 		PreparedStatement pstmt = conn.prepareStatement(temp_str);
@@ -32,6 +35,7 @@ public class StudentManager{
 		System.out.println("[[[" + t + "]]]");
 		pstmt.close();
 	}
+	// 查找学生
 	static void findStu(Connection conn,String temp_name) throws SQLException{
 		String temp_str = "select * from tab1 where name=?";
 		PreparedStatement pstmt = conn.prepareStatement(temp_str);
@@ -42,6 +46,7 @@ public class StudentManager{
 		}
 		pstmt.close();
 	}
+	// 显示整个学生信息表
 	static void showStu(Connection conn) throws SQLException{
 		String temp_str = "select * from tab1";
 		PreparedStatement pstmt = conn.prepareStatement(temp_str);
@@ -56,7 +61,7 @@ public class StudentManager{
 			try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 			} catch (ClassNotFoundException e1){e1.printStackTrace();}
-			try {
+			try { 
 				//建立连接
 				String uri = "jdbc:mysql://localhost:3306/javasjk?useSSL=false&serverTimezone=GMT%2B8&amp";
 				Connection conn = DriverManager.getConnection(uri,"root","1234");
